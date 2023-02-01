@@ -4,6 +4,8 @@ const FriendsBlock =(props) =>{
         <div>
             <img className={s.imgg} src={props.img} alt='avataFriends'/>
             <div className={s.opn}>{props.name}</div>
+            {/*<img className={s.imgg} src={props.img} alt='avataFriends'/>
+            <div className={s.opn}>{props.name}</div>*/}
         </div>
     )
 }
