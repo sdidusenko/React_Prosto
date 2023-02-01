@@ -1,0 +1,12 @@
+.imgg{
+    display: grid;
+    /*justify-items: center;*/
+    justify-content: space-between;
+    width: 70px;
+height: 70px;
+    border-radius: 25px;
+    padding: 5px;
+}
+.opn{
+
+}

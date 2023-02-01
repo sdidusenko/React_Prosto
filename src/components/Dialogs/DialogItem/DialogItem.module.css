@@ -1,0 +1,39 @@
+/*.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    padding: 10px; color: aquamarine;
+
+}
+.dialog:hover{
+    color: aqua;
+    text-decoration: underline;
+}*/
+.dialog {
+
+    color: darkorange;
+    text-decoration: none;
+
+}
+
+/*.messages {
+    padding: 10px;
+}
+
+.message {
+    color: bisque;
+
+}*/
+
+.active {
+    color: wheat;
+    text-decoration: none;
+}
+.active:hover{
+    color: black;}
+.imageProfiles {
+    width: 60px;
+    border-radius: 25px;
+}

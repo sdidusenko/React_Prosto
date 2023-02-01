@@ -1,0 +1,14 @@
+h2{
+    margin: 20px 20px 5px;
+    text-align: center;
+    color: #7EECC0;
+}
+
+.friends{
+    display: grid;
+    grid-auto-flow: column;
+    color: #F07FE1;
+    justify-content: space-between;
+    text-align: center;
+
+}
