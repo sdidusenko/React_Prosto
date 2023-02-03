@@ -10,12 +10,16 @@ import Valera from './../Assets/Valera.jpg'
 import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
+import {renderAllTree} from "./../render";
+
+
+
 let state = {
     profilePage: {
         post: [
             {message: "Hello, I am good", like: 7, img: Cat},
             {message: "It is my first post", like: 77, superlike: 777, img: Frog},
-            {message: "HI, YO, Girls", like: 7777, superlike: 77777, img: Man}
+            {message: "HI, YO, Girls", like: 7777, superlike: 77777, img: Man},
         ],
         friends: [
             {name: 'Olga', id: 1, img: Olga},
@@ -43,6 +47,12 @@ let state = {
     }
 
 
+}
+export let adPost = (postMessage) => {
+
+    let newPost={message: postMessage, like: 3, superlike: 2, img: Valera}
+    state.profilePage.post.push(newPost)
+    renderAllTree(state)
 }
 
 

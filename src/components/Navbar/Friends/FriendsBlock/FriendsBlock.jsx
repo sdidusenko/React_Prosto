@@ -2,11 +2,10 @@ import s from './FriendsBlock.module.css'
 const FriendsBlock =(props) =>{
     return(
         <div>
-
-            <img className={s.imgg} src={props.img} alt='avataFriends'/>
-            <div className={s.opn}>{props.name}</div>
-            {/*<img className={s.imgg} src={props.img} alt='avataFriends'/>
-            <div className={s.opn}>{props.name}</div>*/}
+            <img className={s.avatar} src={props.img} alt='avatarFriends'/>
+            <div>
+                {props.name}
+            </div>
         </div>
     )
 }

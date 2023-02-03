@@ -1,4 +1,4 @@
-.imgg{
+.avatar{
     display: grid;
     /*justify-items: center;*/
     justify-content: space-between;
@@ -6,7 +6,4 @@
 height: 70px;
     border-radius: 25px;
     padding: 5px;
-}
-.opn{
-
 }
