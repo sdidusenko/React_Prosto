@@ -10,7 +10,7 @@ import Valera from './../Assets/Valera.jpg'
 import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
-import {renderAllTree} from "./../render";
+import {renderAllTree} from "../render";
 
 
 
