@@ -1,11 +1,20 @@
 import s from './dialogs.module.css'
 import MessageData from "./Messages/Messages";
 import DialogItem from "./DialogItem/DialogItem";
-
+import React from "react";
 
 const Dialogs = (props) => {
     let dialogElements = props.dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img}/>)
     let messages = props.messagesData.map(mes => <MessageData message={mes.message} id={mes.id}/>)
+    let newMessageElement =React.createRef()
+    let addNewMessage =()=>{
+        let newMessage =newMessageElement.current.value
+        props.adNewMessage(newMessage)
+    }
+    let onMessageChange =()=>{
+        let newMessage =newMessageElement.current.value
+        props.updateNewMessage(newMessage)
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -15,10 +24,14 @@ const Dialogs = (props) => {
                 {messages}
                 <div>
                     <div>
-                        <textarea></textarea>
+                        <textarea onChange={onMessageChange}
+                                  id='new-message'
+                                  ref={newMessageElement}
+                                  value={props.newText}
+                        />
                     </div>
                     <div>
-                        <button>
+                        <button onClick={addNewMessage}>
                             PUSH!!!
                         </button>
                     </div>

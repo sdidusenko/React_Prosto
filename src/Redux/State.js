@@ -10,8 +10,10 @@ import Valera from './../Assets/Valera.jpg'
 import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
-import {renderAllTree} from "../index";
-
+/*import {renderAllTree} from "../index";*/
+let renderAllTree =() =>{
+    console.log('state changed')
+}
 
 let state = {
     profilePage: {
@@ -29,6 +31,7 @@ let state = {
 
     },
     messagePage: {
+        newMessage:'tap new message',
         messagesData: [
             {message: 'Hi', id: 1},
             {message: 'How is your it-kamasutra?', id: 2},
@@ -49,16 +52,30 @@ let state = {
 
 }
 window.state=state
-export let adPost = (postMessage) => {
-
-    let newPost={message: postMessage, like: 3, superlike: 2, img: Valera}
-    state.profilePage.post.push(newPost)
+export const adNewMessage=(newMessage)=>{
+    let messages ={message:newMessage, id:6}
+    state.messagePage.messagesData.push(messages)
+    state.messagePage.newMessage= ''
     renderAllTree(state)
 }
-export let updateNewPostText = (newText) => {
+export const updateNewMessage =(mess)=>{
+    state.messagePage.newMessage=mess
+    renderAllTree(state)
+}
+export const adPost = (postMessage) => {
+    let newPost={message: postMessage, like: 3, superlike: 2, img: Valera}
+    state.profilePage.post.push(newPost)
+    state.profilePage.newPostText = ''
+    renderAllTree(state)
+
+}
+export const updateNewPostText = (newText) => {
 state.profilePage.newPostText= newText
   renderAllTree(state)
 }
 
+export const subscribe=(observer)=>{
+    renderAllTree=observer
+}
 
 export default state
