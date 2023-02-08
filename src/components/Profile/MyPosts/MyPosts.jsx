@@ -3,7 +3,6 @@ import s from './MyPosts.module.css'
 import Posts from './Post/Post'
 
 
-
 const MyPosts = (props) => {
     let posts = props.post.map(elem => <Posts message={elem.message} like={elem.like} superlike={elem.superlike}
                                               img={elem.img}/>)
@@ -14,8 +13,14 @@ const MyPosts = (props) => {
 
         let text=newPostElement.current.value;
         props.adPost(text)
+    props.updateNewPostText('')
     }
 
+       let onPostChange =()=>
+        {
+            let text = newPostElement.current.value;
+            props.updateNewPostText(text)
+    }
     return (
         <div>
             <div className={s.postsBlock}>
@@ -24,7 +29,7 @@ const MyPosts = (props) => {
                 </h3>
                 <div>
                     <div>
-                        <textarea id='new-post' ref={newPostElement}></textarea>
+                        <textarea onChange={onPostChange} id='new-post' ref={newPostElement} value={props.newPostText}/>
                     </div>
                     <div>
                         <button onClick={addPost} >
