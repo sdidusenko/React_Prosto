@@ -1,7 +1,5 @@
 import reportWebVitals from './reportWebVitals';
-import {adNewMessage, adPost, subscribe, updateNewMessage, updateNewPostText} from "./Redux/State";
-import state from "./Redux/State";
-
+import store from './Redux/State'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -10,24 +8,24 @@ import {BrowserRouter} from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
- let renderAllTree = (state) => {
+ let renderAllTree = () => {
 
     root.render(
         /*<React.StrictMode>*/
         <BrowserRouter><App
-            appState={state}
-            adPost={adPost}
-            updateNewPostText={updateNewPostText}
-            adNewMessage={adNewMessage}
-            updateNewMessage={updateNewMessage}
+            appState={store.getState()}
+            adPost={store.adPost.bind(store)}
+            updateNewPostText={store.updateNewPostText.bind(store)}
+            adNewMessage={store.adNewMessage.bind(store)}
+            updateNewMessage={store.updateNewMessage.bind(store)}
         /></BrowserRouter>/*переніс з арр.js
         /*</React.StrictMode>*//* this string we have not in a lesson*/
     );
 }
 
-renderAllTree(state)
+renderAllTree(store.getState())
 
-subscribe(renderAllTree)
+store.subscribe(renderAllTree)
 
 
 
