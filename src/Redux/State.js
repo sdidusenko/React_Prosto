@@ -10,11 +10,9 @@ import Valera from './../Assets/Valera.jpg'
 import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
-/*import {renderAllTree} from "../index";*/
-/*let renderAllTree =() =>{
-    console.log('state changed')
-}*/
-let store={
+
+
+let store = {
     _state: {
         profilePage: {
             newPostText: 'It-kam',
@@ -31,7 +29,7 @@ let store={
 
         },
         messagePage: {
-            newMessage:'tap new message',
+            newMessage: 'tap new message',
             messagesData: [
                 {message: 'Hi', id: 1},
                 {message: 'How is your it-kamasutra?', id: 2},
@@ -51,97 +49,64 @@ let store={
 
 
     },
-    getState(){
+    _renderAllTree() {
+        console.log('state changed')
+    },
+    getState() {
         return this._state
     },
-    _renderAllTree(){
-        console.log('state changed')
-},
-    adPost(postMessage){
-        let newPost={message: postMessage, like: 3, superlike: 2, img: Valera}
+    subscribe(observer) {
+        this._renderAllTree = observer
+    },
+
+
+/*
+    adPost(postMessage) {
+        let newPost = {message: postMessage, like: 3, superlike: 2, img: Valera}
         this._state.profilePage.post.push(newPost)
         this._state.profilePage.newPostText = ''
         this._renderAllTree(this._state)
     },
-    adNewMessage(newMessage){
-        let messages ={message:newMessage, id:6}
+    adNewMessage(newMessage) {
+        let messages = {message:this._state.messagePage.newMessage, id: 6}
         this._state.messagePage.messagesData.push(messages)
-        this._state.messagePage.newMessage= ''
+        this._state.messagePage.newMessage = ''
         this._renderAllTree(this._state)
     },
-    updateNewMessage (mess){
-        this._state.messagePage.newMessage=mess
+    updateNewMessage(mess) {
+        this._state.messagePage.newMessage = mess
         this._renderAllTree(this._state)
     },
-    updateNewPostText(newText){
-        this._state.profilePage.newPostText= newText
+    updateNewPostText(newText) {
+        this._state.profilePage.newPostText = newText
         this._renderAllTree(this._state)
     },
-    subscribe(observer){
-        this._renderAllTree=observer
+*/
+
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {message: this._state.profilePage.newPostText, like: 3, superlike: 2, img: Valera}
+            this._state.profilePage.post.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._renderAllTree(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._renderAllTree(this._state)
+        }
+        else if (action.type === 'UPDATE-NEW-MESSAGE') {
+            this._state.messagePage.newMessage = action.mess
+            this._renderAllTree(this._state)
+        }
+        else if (action.type === 'AD-NEW-MESSAGE') {
+            let messages = {message: this._state.messagePage.newMessage, id: 6}
+            this._state.messagePage.messagesData.push(messages)
+            this._state.messagePage.newMessage = ''
+            this._renderAllTree(this._state)
+        }
     }
 }
 
-/*let state = {
-    profilePage: {
-        newPostText: 'It-kam',
-        post: [
-            {message: "Hello, I am good", like: 7, img: Cat},
-            {message: "It is my first post", like: 77, superlike: 777, img: Frog},
-            {message: "HI, YO, Girls", like: 7777, superlike: 77777, img: Man},
-        ],
-        friends: [
-            {name: 'Olga', id: 1, img: Olga},
-            {name: 'Petro', id: 2, img: Petro},
-            {name: 'Nadiya', id: 3, img: Nadiya},
-        ],
-
-    },
-    messagePage: {
-        newMessage:'tap new message',
-        messagesData: [
-            {message: 'Hi', id: 1},
-            {message: 'How is your it-kamasutra?', id: 2},
-            {message: 'Yo', id: 3},
-            {message: 'Yo', id: 4},
-            {message: 'Yo', id: 5},
-        ],
-        dialogsData: [
-            {name: 'Dima', id: 1, img: Dima},
-            {name: 'Andrey', id: 2, img: Andrey},
-            {name: 'Sveta', id: 3, img: Sveta},
-            {name: 'Sasha', id: 4, img: Sasha},
-            {name: 'Viktor', id: 5, img: Viktor},
-            {name: 'Valera', id: 6, img: Valera},
-        ],
-    }
-
-
-}*/
-window.store=store
-/*export const adNewMessage=(newMessage)=>{
-    let messages ={message:newMessage, id:6}
-    state.messagePage.messagesData.push(messages)
-    state.messagePage.newMessage= ''
-    renderAllTree(state)
-}*/
-/*export const updateNewMessage =(mess)=>{
-    state.messagePage.newMessage=mess
-    renderAllTree(state)
-}*/
-/*export const adPost = (postMessage) => {
-    let newPost={message: postMessage, like: 3, superlike: 2, img: Valera}
-    state.profilePage.post.push(newPost)
-    state.profilePage.newPostText = ''
-    renderAllTree(state)
-}*/
-/*export const updateNewPostText = (newText) => {
-state.profilePage.newPostText= newText
-  renderAllTree(state)
-}*/
-
-/*export const subscribe=(observer)=>{
-    renderAllTree=observer
-}*/
+window.store = store
 
 export default store

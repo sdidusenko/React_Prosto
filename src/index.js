@@ -14,10 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
         /*<React.StrictMode>*/
         <BrowserRouter><App
             appState={store.getState()}
-            adPost={store.adPost.bind(store)}
-            updateNewPostText={store.updateNewPostText.bind(store)}
-            adNewMessage={store.adNewMessage.bind(store)}
-            updateNewMessage={store.updateNewMessage.bind(store)}
+
+            dispatch={store.dispatch.bind(store)}
+
         /></BrowserRouter>/*переніс з арр.js
         /*</React.StrictMode>*//* this string we have not in a lesson*/
     );

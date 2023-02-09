@@ -4,8 +4,8 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {adNewMessage, updateNewPostText} from "./Redux/State";
+import { Route, Routes} from "react-router-dom";
+
 
 const App = (props) => {
     let pathMain = '/profile'
@@ -20,17 +20,19 @@ const App = (props) => {
                 <Routes>
                     <Route path={pathMain}
                         element={<Profile
-                            updateNewPostText={props.updateNewPostText}
                             profilePage={props.appState.profilePage}
-                            adPost={props.adPost}
+
+                            dispatch={props.dispatch}
+
                     />}/>
                     <Route path={pathDialog}
                         element={<Dialogs
                             dialogsData={props.appState.messagePage.dialogsData}
                             messagesData={props.appState.messagePage.messagesData}
-                            adNewMessage={props.adNewMessage}
-                            updateNewMessage={props.updateNewMessage}
-                            newText={props.appState.messagePage.newMessage}
+                            newMessageText={props.appState.messagePage.newMessage}
+
+                            dispatch={props.dispatch}
+
                         />}/>
                 </Routes>
             </div>
