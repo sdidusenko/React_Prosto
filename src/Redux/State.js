@@ -11,6 +11,11 @@ import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE='UPDATE-NEW-MESSAGE'
+const AD_NEW_MESSAGE='AD-NEW-MESSAGE'
+
 
 let store = {
     _state: {
@@ -85,12 +90,12 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {message: this._state.profilePage.newPostText, like: 3, superlike: 2, img: Valera}
             this._state.profilePage.post.push(newPost)
             this._state.profilePage.newPostText = ''
             this._renderAllTree(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._renderAllTree(this._state)
         }
@@ -104,8 +109,19 @@ let store = {
             this._state.messagePage.newMessage = ''
             this._renderAllTree(this._state)
         }
-    }
+    },
 }
+
+export const addPostActionCreator =()=>({type: ADD_POST})
+export const updateNewPostTextActionCreator =(text)=>({
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text,
+    })
+export const adNewMessageActionCreator=()=>({type:AD_NEW_MESSAGE})
+export const updateNewMessageActionCreator=(newMessage)=>
+    ({type:UPDATE_NEW_MESSAGE,
+        mess:newMessage})
+
 
 window.store = store
 
