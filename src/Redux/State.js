@@ -50,10 +50,12 @@ let store = {
                 {name: 'Viktor', id: 5, img: Viktor},
                 {name: 'Valera', id: 6, img: Valera},
             ],
-        }
-
-
+        },
+        sidebar:{}
     },
+
+
+
     _renderAllTree() {
         console.log('state changed')
     },
@@ -64,29 +66,6 @@ let store = {
         this._renderAllTree = observer
     },
 
-
-/*
-    adPost(postMessage) {
-        let newPost = {message: postMessage, like: 3, superlike: 2, img: Valera}
-        this._state.profilePage.post.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._renderAllTree(this._state)
-    },
-    adNewMessage(newMessage) {
-        let messages = {message:this._state.messagePage.newMessage, id: 6}
-        this._state.messagePage.messagesData.push(messages)
-        this._state.messagePage.newMessage = ''
-        this._renderAllTree(this._state)
-    },
-    updateNewMessage(mess) {
-        this._state.messagePage.newMessage = mess
-        this._renderAllTree(this._state)
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._renderAllTree(this._state)
-    },
-*/
 
 
     dispatch(action) {
@@ -99,11 +78,11 @@ let store = {
             this._state.profilePage.newPostText = action.newText
             this._renderAllTree(this._state)
         }
-        else if (action.type === 'UPDATE-NEW-MESSAGE') {
+        else if (action.type === UPDATE_NEW_MESSAGE) {
             this._state.messagePage.newMessage = action.mess
             this._renderAllTree(this._state)
         }
-        else if (action.type === 'AD-NEW-MESSAGE') {
+        else if (action.type === AD_NEW_MESSAGE) {
             let messages = {message: this._state.messagePage.newMessage, id: 6}
             this._state.messagePage.messagesData.push(messages)
             this._state.messagePage.newMessage = ''

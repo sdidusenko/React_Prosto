@@ -5,11 +5,13 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
 import { Route, Routes} from "react-router-dom";
+import DialogsTwo from "./components/Dialogs-two/Dialogs-Two";
 
 
 const App = (props) => {
     let pathMain = '/profile'
     let pathDialog = '/dialogs/*'
+    let pathDialogTwo= '/dialogsTwo'
 
     return (
         /*<BrowserRouter>*/
@@ -21,19 +23,19 @@ const App = (props) => {
                     <Route path={pathMain}
                         element={<Profile
                             profilePage={props.appState.profilePage}
-
                             dispatch={props.dispatch}
-
                     />}/>
                     <Route path={pathDialog}
                         element={<Dialogs
                             dialogsData={props.appState.messagePage.dialogsData}
                             messagesData={props.appState.messagePage.messagesData}
                             newMessageText={props.appState.messagePage.newMessage}
-
                             dispatch={props.dispatch}
-
                         />}/>
+                    <Route path={pathDialogTwo}
+                           element={<DialogsTwo
+                              store={props.store}
+                           />}/>
                 </Routes>
             </div>
         </div>
