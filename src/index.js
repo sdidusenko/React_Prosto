@@ -1,5 +1,5 @@
 import reportWebVitals from './reportWebVitals';
-import store from './Redux/State'
+import store from './Redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -22,6 +22,10 @@ let renderAllTree = () => {
 renderAllTree(store.getState())
 
 store.subscribe(renderAllTree)
+/*store.subscribe(()=>{
+    let state= store.getState()
+    renderAllTree(state)
+})*/
 
 
 
