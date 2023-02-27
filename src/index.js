@@ -8,18 +8,15 @@ import {BrowserRouter} from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
- let renderAllTree = () => {
-
+let renderAllTree = () => {
     root.render(
-        /*<React.StrictMode>*/
-        <BrowserRouter><App
-            appState={store.getState()}
-
-            dispatch={store.dispatch.bind(store)}
-
-        /></BrowserRouter>/*переніс з арр.js
-        /*</React.StrictMode>*//* this string we have not in a lesson*/
-    );
+        <BrowserRouter>
+            <App
+                appState={store.getState()}
+                dispatch={store.dispatch.bind(store)}
+                store={store}
+            /></BrowserRouter>
+        );
 }
 
 renderAllTree(store.getState())
