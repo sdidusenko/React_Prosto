@@ -2,13 +2,14 @@ import s from '../Dialogs/dialogs.module.css'
 import MessageData from '../Dialogs/Messages/Messages';
 import DialogItem from "../Dialogs/DialogItem/DialogItem";
 import React from "react";
-import state, {adNewMessageActionCreator, updateNewMessageActionCreator} from "../../Redux/State";
+import state  from "../../Redux/State";
+import {adNewMessageActionCreator, updateNewMessageActionCreator} from '../../Redux/messageReducer'
 
 const DialogsTwo = (props) => {
     let state= props.store.getState().messagePage;
     let dialogElements = state.dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img}/>)
     let messages = state.messagesData.map(mes => <MessageData message={mes.message} id={mes.id}/>)
-    let newMessageBody = state.newMessageBody;
+    let newMessageBody = state.newMessage;
 
     let onSendMessageClick=()=>{
         props.store.dispatch(adNewMessageActionCreator())

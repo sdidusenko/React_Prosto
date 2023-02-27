@@ -10,11 +10,9 @@ import Valera from './../Assets/Valera.jpg'
 import Olga from './../Assets/Olga.jpg'
 import Petro from './../Assets/Petro.jpg'
 import Nadiya from './../Assets/Nadiya.jpg'
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE='UPDATE-NEW-MESSAGE'
-const AD_NEW_MESSAGE='AD-NEW-MESSAGE'
+import profileReducer from "./profileReducer";
+import messageReducer from "./messageReducer";
+import sidebarReducer from "./sidebarReducer";
 
 
 let store = {
@@ -69,37 +67,16 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {message: this._state.profilePage.newPostText, like: 3, superlike: 2, img: Valera}
-            this._state.profilePage.post.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._renderAllTree(this._state)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this._renderAllTree(this._state)
-        }
-        else if (action.type === UPDATE_NEW_MESSAGE) {
-            this._state.messagePage.newMessage = action.mess
-            this._renderAllTree(this._state)
-        }
-        else if (action.type === AD_NEW_MESSAGE) {
-            let messages = {message: this._state.messagePage.newMessage, id: 6}
-            this._state.messagePage.messagesData.push(messages)
-            this._state.messagePage.newMessage = ''
-            this._renderAllTree(this._state)
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagePage = messageReducer(this._state.messagePage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._renderAllTree(this._state)
     },
 }
 
-export const addPostActionCreator =()=>({type: ADD_POST})
-export const updateNewPostTextActionCreator =(text)=>({
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    })
-export const adNewMessageActionCreator=()=>({type:AD_NEW_MESSAGE})
-export const updateNewMessageActionCreator=(newMessage)=>
-    ({type:UPDATE_NEW_MESSAGE,
-        mess:newMessage})
+
 
 
 window.store = store
