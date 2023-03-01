@@ -2,8 +2,8 @@ import s from "./Messages.module.css";
 
 const MessageData = (props) => {
     return (
-        <div
-            className={s.message}>{props.message}
+        <div className={s.message}>
+            {props.message}
         </div>
 
     )

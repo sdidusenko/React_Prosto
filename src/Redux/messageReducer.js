@@ -5,6 +5,7 @@ import Sasha from "../Assets/Sasha.jpg";
 import Viktor from "../Assets/Viktor.jpg";
 import Valera from "../Assets/Valera.jpg";
 
+
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 const AD_NEW_MESSAGE = 'AD-NEW-MESSAGE'
 
@@ -28,17 +29,22 @@ let initialState={
 }
 
 const messageReducer = (state=initialState, action) => {
-    switch (action.type) {
+      switch (action.type){
         case UPDATE_NEW_MESSAGE:
-            state.newMessage = action.mess
-            return state
+            return {
+                ...state,
+                newMessage: action.mess
+            }
         case AD_NEW_MESSAGE:
-            let messages = state.newMessage
-            state.messagesData.push({id: 6, message: messages})
-            state.newMessage = ''
+            let mess = state.newMessage;
+            return {
+                ...state,
+                newMessage: '',
+                messagesData: [{message: mess, id: 7}, ...state.messagesData, {message: mess, id: 7}]
+            }
+        default:
             return state
-        default: return state
-    }
+        }
 }
 
 export const adNewMessageActionCreator=()=>({type:AD_NEW_MESSAGE})

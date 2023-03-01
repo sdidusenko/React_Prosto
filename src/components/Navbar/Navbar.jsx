@@ -1,18 +1,18 @@
 import s from './navbar.module.css'
 import {NavLink} from "react-router-dom";
-import Friends from "./Friends/Friends";
+/*import Friends from "./Friends/Friends";*/
 
-const Navbar = (props) => {
+const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div>
-                <NavLink to='/profile' className={navData => navData.isActive ? s.active : s.item}>Profile</NavLink>
+                <NavLink to='/profile/' className={navData => navData.isActive ? s.active : s.item}>Profile</NavLink>
             </div>
             <div className={`${s.item} ${s.active}`}>
-                <NavLink to='/dialogs' className={navData => navData.isActive ? s.active : s.item}>Messages</NavLink>
+                <NavLink to='/dialogs/' className={navData => navData.isActive ? s.active : s.item}>Dialogs</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/dialogsTwo' className={navData => navData.isActive ? s.active : s.item}>Dialogs</NavLink>
+                <NavLink to='/messages/' className={navData => navData.isActive ? s.active : s.item}>Messages</NavLink>
             </div>
             <div className={s.item}>
                 <a>Music</a>
@@ -20,7 +20,7 @@ const Navbar = (props) => {
             <div className={s.item}>
                 <a>Settings</a>
             </div>
-            <Friends friends={props.friends}/>
+            {/*<Friends friends={props.friends}/>*/}
         </nav>
     )
 }

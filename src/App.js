@@ -7,23 +7,19 @@ import {Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-const App = (props) => {
+const App = ()=> {
     let pathMain = '/profile'
     let pathDialog = '/dialogs/*'
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar friends={props.appState.profilePage.friends}/>
+            <Navbar /*friends={props.appState.profilePage.friends}*//>
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path={pathMain}
-                           element={<Profile
-                               store={props.store}
-                           />}/>
+                           element={<Profile/>}/>
                     <Route path={pathDialog}
-                           element={<DialogsContainer
-                               store={props.store}
-                           />}/>
+                           element={<DialogsContainer/>}/>
                 </Routes>
             </div>
         </div>

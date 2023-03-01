@@ -16,27 +16,32 @@ let initialState={
         {message: "It is my first post", like: 77, superlike: 777, img: Frog},
         {message: "HI, YO, Girls", like: 7777, superlike: 77777, img: Man},
     ],
-    friends: [
+    /*friends: [
         {name: 'Olga', id: 1, img: Olga},
         {name: 'Petro', id: 2, img: Petro},
         {name: 'Nadiya', id: 3, img: Nadiya},
     ],
-
+*/
 }
 
 
 const profileReducer = (state=initialState, action) => {
      switch (action.type) {
-        case ADD_POST:
-            let newPost = {message: state.newPostText, like: 3, superlike: 2, img: Valera}
-            state.post.push(newPost)
-            state.newPostText = ''
-            return state
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
-        default:
-            return state
+         case ADD_POST: {
+             let newPost = {message: state.newPostText, like: 3, superlike: 2, img: Valera}
+             return {
+                 ...state,
+                 post:[...state.post, newPost],
+                 newPostText: ''
+             }
+         }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText:action.newText
+            }
+        }
+        default: return state
     }
 }
 export const addPostActionCreator =()=>({type: ADD_POST})

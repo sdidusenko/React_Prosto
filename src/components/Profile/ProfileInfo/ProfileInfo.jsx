@@ -2,7 +2,7 @@ import s from './ProfileInfo.module.css'
 
 const ProfileInfo = () => {
     return (
-        <div /*className={s.content}*/>
+        <div>
 
             <div>
                 <img className={s.profileBack}
