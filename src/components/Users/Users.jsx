@@ -67,7 +67,7 @@ function Users(props) {
                                 ? <button className={style.buttonFollow} onClick={() => {
                                     props.follow(u.id)
                                 }}>Follow</button>
-                                : <button className={style.buttonFollow} onClick={() => {
+                                : <button className={`${style.buttonFollow} ${style.unfollow}`} onClick={() => {
                                     props.unfollow(u.id)
                                 }}>Unfollow</button>}
                         </div>

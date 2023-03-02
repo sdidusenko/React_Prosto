@@ -16,6 +16,8 @@
    border-radius: 7px;
     margin: 0 5px 5px 5px;
     border: 1px solid #b4e22b;
+    background: green;
+    color: white;
 }
 
 .photoAndButton{
@@ -55,11 +57,22 @@
 .city{
     letter-spacing: 1px;
     font-weight: 400;
-    text-align: right;
-    padding: 10px;
+    text-align: end;
+    padding: 5px 10px;
+    border: 2px solid gray;
+    width: fit-content;
+    border-radius: 5px;
+    background: #80a511;
 }
 .location{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: end;
+    margin-right: 10px;
+}
+
+.unfollow{
+    background: #bd4317;
+    color: white;
 }
