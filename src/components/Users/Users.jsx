@@ -4,7 +4,7 @@ import Mihalich from "../../Assets/Mihalich.jpg";
 import Slavik from "../../Assets/Slavik.jpg";
 import Mariya from "../../Assets/Mariya.jpg";
 import Aliona from "../../Assets/Aliona.jpg";
-
+import sky from '../../Assets/sky.jpg'
 
 function Users(props) {
     if (props.users.length === 0) {
