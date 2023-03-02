@@ -1,0 +1,65 @@
+.userPhoto{
+    width: 75px;
+    height: 100px;
+    border-radius: 13px;
+    padding: 5px;
+}
+.userPhotoAndContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+    border: 2px solid yellowgreen;
+    border-radius: 15px;
+}
+.buttonFollow{
+   border-radius: 7px;
+    margin: 0 5px 5px 5px;
+    border: 1px solid #b4e22b;
+}
+
+.photoAndButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nameAndMessage{
+    width: 14vw;
+
+}
+.name{
+    text-align: center;
+    font-size: 23px;
+    margin: 10px auto;
+    color: #e1e171;
+    text-shadow: 1px 1px #8f2810;
+    letter-spacing: 2px;
+}
+.country{
+    margin: 5px 10px 10px;
+    font-size: 21px;
+    text-align: end;
+    color: #c6aa56;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-decoration: underline #bd4317;
+}
+
+.status{
+    font-style: italic;
+    letter-spacing: 1px;
+    font-weight: bolder;
+
+}
+
+.city{
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-align: right;
+    padding: 10px;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
