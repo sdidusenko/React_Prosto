@@ -5,10 +5,17 @@ import Slavik from "../../Assets/Slavik.jpg";
 import Mariya from "../../Assets/Mariya.jpg";
 import Aliona from "../../Assets/Aliona.jpg";
 import sky from '../../Assets/sky.jpg'
+import axios from "axios";
+import userPhoto from '../../Assets/images/users.jpg'
 
 function Users(props) {
     if (props.users.length === 0) {
-        props.setUsers([
+
+     axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response=>{
+        props.setUsers(response.data.items)
+     })
+
+       /* props.setUsers([
             {
                 id: 1,
                 followed: true,
@@ -52,7 +59,7 @@ function Users(props) {
                     city: 'Ovruch region',
                     country: 'Ukraine'
                 },
-            },])
+            },])*/
     }
 
 
@@ -62,7 +69,7 @@ function Users(props) {
                 <div key={u.id}>
                     <div className={style.userPhotoAndContent}>
                         <div className={style.photoAndButton}>
-                            <img className={style.userPhoto} src={u.img} alt='usersPhoto'/>
+                            <img className={style.userPhoto} src={u.photos.small !=null? u.photos.small : userPhoto} alt='usersPhoto'/>
                             {u.followed
                                 ? <button className={style.buttonFollow} onClick={() => {
                                     props.follow(u.id)
@@ -73,12 +80,12 @@ function Users(props) {
                         </div>
                         <div className={style.nameAndMessage}>
                             <div>
-                                <p className={style.name}>{u.fullName}</p></div>
+                                <p className={style.name}>{u.name}</p></div>
                             <div><p className={style.status}>{u.status}</p></div>
                         </div>
                         <div className={`${style.nameAndMessage} ${style.location}`}>
-                            <div><p className={style.country}>{u.location.country}</p></div>
-                            <div><p className={style.city}>{u.location.city}</p></div>
+                            <div><p className={style.country}>{"u.location.country"}</p></div>
+                            <div><p className={style.city}>{"u.location.city"}</p></div>
                         </div>
                     </div>
                 </div>
