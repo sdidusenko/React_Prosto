@@ -77,3 +77,8 @@
     align-items: flex-end;
 
 }
+
+
+.selectedPage{
+    font-weight: bold;
+}

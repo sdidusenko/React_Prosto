@@ -1,15 +1,16 @@
 import s from "./Friends.module.css";
 import FriendsBlock from "./FriendsBlock/FriendsBlock";
+import store from "../../../Redux/Store";
 
-const Friends = (props) => {
-    let friends = props.friends.map(dialog => <FriendsBlock name={dialog.name} id={dialog.id} img={dialog.img}/>)
+const Friends = () => {
+    const friendItem=store._state.profilePage.friends.map((dialog, index) => (<FriendsBlock key={index} name={dialog.name} id={dialog.id} img={dialog.img}/>))
     return (
         <div>
             <h2>
                 Friends
             </h2>
             <div className={s.friends}>
-                {friends}
+                {friendItem}
             </div>
         </div>
     )
